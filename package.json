@@ -1,0 +1,17 @@
+{
+  "name": "SCSS",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass",
+    "sass:compile": "node-sass -w scss/ -o dist/css/ --recursive"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^4.14.1",
+    "sass": "^1.26.11"
+  }
+}

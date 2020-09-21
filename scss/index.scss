@@ -1,0 +1,91 @@
+// import partials
+@import 'variables';
+@import 'functions';
+@import 'mixins';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: $light-color;
+  color: $dark-color;
+  font-family:$font-stack;
+  line-height: 1.5;
+}
+
+header {
+  background: $dark-color;
+  color: set-text-color($dark-color);
+  padding: 1rem;
+
+  h1 {
+    text-align: center;
+  }
+}
+
+.section {
+  padding: 3rem;
+
+  h3 { 
+    font-size: 3rem;
+  }
+
+  // & is a wildcard which represents parent selector (ie section)
+  &-a {
+    background: $primary-color;
+    color: set-text-color($primary-color);
+  }
+
+  &-b {
+    background: $secondary-color;
+    color: set-text-color($secondary-color);
+  }
+}
+
+a {
+  color: #333;
+  // ampersand v useful for pseudo classes
+  &:hover {
+    color: coral;
+  }
+}
+// % demarks a class that should be extended
+%btn-shared {
+  display: inline-block;
+  padding: 0.7rem 2rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 1rem;
+}
+
+.btn {
+  &-light {
+    @extend %btn-shared;
+    background: $light-color;
+    color: set-text-color($light-color);
+
+    &:hover {
+      // use @include to use a mixin
+      @include transform(rotate(20deg));
+
+      // use in-built colour function
+      background-color: darken($light-color, 50%);
+      color: set-text-color($dark-color);
+    }
+  }
+
+  &-dark {
+    @extend %btn-shared;
+    background: $dark-color;
+    color: set-text-color($dark-color);
+
+    &:hover {
+      @include transform(rotate(-20deg));
+      background: lighten($dark-color, 50%);
+      color: set-text-color($light-color);
+    }
+  }
+}
+
